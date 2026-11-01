@@ -4,7 +4,7 @@ import pytest
 from pydantic import AliasChoices, AliasPath, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from pydantic_env_manager import SyncedSettings, check_env, sync_env
+from pydantic_env_manager import EnvManagedSettings, check_env, sync_env
 from pydantic_env_manager.cli import main
 from pydantic_env_manager.envfile import EXTRAS_HEADING, merge
 from pydantic_env_manager.schema import collect
@@ -134,9 +134,9 @@ def test_cli(tmp_path, monkeypatch, capsys):
 
 
 def _boot_cls(tmp_path):
-    class B(SyncedSettings):
+    class B(EnvManagedSettings):
         model_config = SettingsConfigDict(env_file=str(tmp_path / ".env"))
-        sync_out = True
+        env_sync_on_init = True
         port: int = 1
 
     return B
@@ -168,7 +168,7 @@ def test_boot_sync_failure_only_warns(tmp_path, clean_env, caplog):
 
 
 def test_boot_sync_off_by_default(tmp_path, clean_env):
-    class Off(SyncedSettings):
+    class Off(EnvManagedSettings):
         model_config = SettingsConfigDict(env_file=str(tmp_path / ".env"))
 
     Off()

@@ -105,20 +105,20 @@ sync_env(Settings, env_file="cfg/.env", example_file="cfg/.env.example")
 
 ## 6. Sync on app boot (local dev)
 
-Subclass `SyncedSettings` and set `sync_out = True`. Both files sync whenever the settings object is created.
+Subclass `EnvManagedSettings` and set `env_sync_on_init = True`. Both files sync whenever the settings object is created.
 
 ```python
-from pydantic_env_manager import SyncedSettings
+from pydantic_env_manager import EnvManagedSettings
 
-class Settings(SyncedSettings):
-    sync_out = True
+class Settings(EnvManagedSettings):
+    env_sync_on_init = True
     port: int = 8000
 
 settings = Settings()   # .env and .env.example are now in sync
 ```
 
 Safety behaviour:
-- Off unless `sync_out = True`.
+- Off unless `env_sync_on_init = True`.
 - Skipped when the `CI` or `PROD` environment variable is set (anything except empty, `0` or `false`).
 - If writing fails (read-only filesystem, permissions), it logs a warning and the app still starts.
 

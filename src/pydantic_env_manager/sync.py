@@ -1,4 +1,4 @@
-"""Public API: sync_env, check_env and the SyncedSettings boot hook."""
+"""Public API: sync_env, check_env and the EnvManagedSettings boot hook."""
 from __future__ import annotations
 
 import logging
@@ -109,17 +109,17 @@ def _skip_boot_sync() -> bool:
     return any(os.environ.get(v, "").lower() not in ("", "0", "false") for v in ("CI", "PROD"))
 
 
-class SyncedSettings(BaseSettings):
-    """BaseSettings that syncs .env / .env.example on creation when `sync_out = True`.
+class EnvManagedSettings(BaseSettings):
+    """BaseSettings that syncs .env / .env.example on creation when `env_sync_on_init = True`.
 
     Dev convenience only: skipped when CI or PROD is set; failures only warn.
     """
 
-    sync_out: ClassVar[bool] = False
+    env_sync_on_init: ClassVar[bool] = False
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        if type(self).sync_out and not _skip_boot_sync():
+        if type(self).env_sync_on_init and not _skip_boot_sync():
             try:
                 sync_env(type(self))
             except Exception as exc:  # never break the app over a dev convenience

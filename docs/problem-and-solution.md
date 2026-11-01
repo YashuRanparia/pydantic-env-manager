@@ -89,7 +89,7 @@ This split is the key design decision: the template can be regenerated freely, w
 ### 4.2 Interfaces
 
 - **CLI**: `sync` writes both files; `check` verifies without writing and exits non-zero on drift (usable as a CI step or pre-commit hook).
-- **Python API**: `sync_env(...)` for explicit calls, and an opt-in `sync_out=True` that syncs on application boot during local development.
+- **Python API**: `sync_env(...)` for explicit calls, and an opt-in `env_sync_on_init=True` that syncs on application boot during local development.
 
 ### 4.3 Safety principles
 
@@ -119,4 +119,4 @@ The annotated `.env.example` is the agent-readable schema. Teams block `.env` fr
 
 ## 7. Future directions (not in v1)
 
-Nested models (`env_nested_delimiter`), multiple Settings classes and other sources, `.env.test` / `.env.prod` variants, machine-readable schema output, agent-config helpers (e.g. ignore rules), a pre-commit package, and further ways to run it from Python (`python -m <name>`, class-method sugar on `SyncedSettings`, import-string targets for `sync_env`).
+Nested models (`env_nested_delimiter`), multiple Settings classes and other sources, `.env.test` / `.env.prod` variants, machine-readable schema output, agent-config helpers (e.g. ignore rules), a pre-commit package, and further ways to run it from Python (`python -m <name>`, class-method sugar on `EnvManagedSettings`, import-string targets for `sync_env`).

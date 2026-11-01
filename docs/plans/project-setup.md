@@ -84,5 +84,5 @@ Create `schema.py`, `envfile.py`, `render.py`, `cli.py` with only a docstring an
 2. `render.py` (`.env.example`)
 3. `envfile.py` (line-preserving merge)
 4. `cli.py` (`sync`, `check`)
-5. `SyncedSettings` / `sync_out`
+5. `EnvManagedSettings` / `env_sync_on_init`
 6. README with demo and usage
