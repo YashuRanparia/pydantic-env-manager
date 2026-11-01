@@ -97,7 +97,7 @@ pydantic-env-manager check app.settings:Settings
 from pydantic_env_manager import sync_env, check_env
 
 result = sync_env(Settings)                       # SyncResult(example_changed, env_changed)
-report = check_env(Settings)                      # CheckReport(problems, notes)
+report = check_env(Settings)                      # CheckReport(problems, notes, missing); .missing lists keys absent from .env
 sync_env(Settings, env_file="cfg/.env", example_file="cfg/.env.example")
 ```
 
@@ -127,6 +127,7 @@ Safety behaviour:
 - **Running it twice changes nothing.** Unchanged files are not rewritten.
 - **Key names.** `env_prefix` + field name, uppercased unless `case_sensitive=True`. A field with a `validation_alias` uses the alias as-is, because `pydantic-settings` does not apply the prefix to aliased fields. For `AliasChoices` the first choice is used; `AliasPath` fields are skipped with a warning.
 - **Required fields** are written blank. Blank is not a missing value to Pydantic: a required `str` loads as an empty string, while a required `int` or `bool` fails validation.
+- **Settings constants:** annotate with `ClassVar` (e.g. `MAX_RETRIES: ClassVar[int] = 3`). Pydantic does not treat them as fields, so they are never read from env nor written to either file. Every other annotated field is an env var.
 - **Multi-line quoted values** and `export KEY=...` lines in `.env` are preserved.
 
 ## 8. Using it with AI coding agents
@@ -135,4 +136,4 @@ Block your agent from reading `.env` (for example with its ignore or deny settin
 
 ## 9. Not supported in v1
 
-Nested models (`env_nested_delimiter`), multiple Settings classes, yaml/toml/secrets-dir sources, and `.env.test` / `.env.prod` variants. See [scopes/v1.md](scopes/v1.md).
+Nested models (`env_nested_delimiter`), multiple Settings classes, yaml/toml/secrets-dir sources, and `.env.test` / `.env.prod` variants.
