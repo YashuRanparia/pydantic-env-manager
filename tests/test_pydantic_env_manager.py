@@ -1,4 +1,5 @@
 import logging
+from typing import ClassVar
 
 import pytest
 from pydantic import AliasChoices, AliasPath, Field, SecretStr
@@ -36,6 +37,15 @@ def test_case_sensitive():
         Mixed: int = 1
 
     assert [s.key for s in collect(C)] == ["Mixed"]
+
+
+def test_classvar_constants_are_not_env_vars():
+    class C(BaseSettings):
+        name: str = "x"
+        MAX_RETRIES: ClassVar[int] = 3
+
+    assert [s.key for s in collect(C)] == ["NAME"]
+    assert C().MAX_RETRIES == 3
 
 
 def test_spec_values():
