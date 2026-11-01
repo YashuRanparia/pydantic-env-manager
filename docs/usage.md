@@ -12,10 +12,8 @@ Your `Settings` class is the single source of truth. `pydantic-env-manager` keep
 
 ## 2. Install
 
-Not on PyPI yet. From a checkout:
-
 ```bash
-pip install -e .
+pip install pydantic-env-manager
 ```
 
 Requires Python ≥ 3.9 and `pydantic-settings` ≥ 2 (installed automatically).

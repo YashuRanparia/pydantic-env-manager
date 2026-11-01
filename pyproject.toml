@@ -10,7 +10,23 @@ readme = "README.md"
 keywords = ["pydantic", "pydantic-settings", "fastapi", "dotenv", "env", "settings", "cli"]
 requires-python = ">=3.9"
 license = "MIT"
+authors = [{ name = "Yashu Ranparia" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
 dependencies = ["pydantic-settings>=2"]
+
+[project.urls]
+Homepage = "https://github.com/YashuRanparia/pydantic-env-manager"
+Issues = "https://github.com/YashuRanparia/pydantic-env-manager/issues"
 
 [project.optional-dependencies]
 dev = ["pytest", "ruff"]
@@ -20,6 +36,9 @@ pydantic-env-manager = "pydantic_env_manager.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pydantic_env_manager"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md", "LICENSE", "pyproject.toml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
