@@ -114,7 +114,8 @@ def test_check(tmp_path):
     r = check_env(S, env, ex)
     assert r.problems == [] and "STRAY" in r.notes[0]  # extras never fail
     env.write_text("APP_PORT=1\n")
-    assert "missing" in check_env(S, env, ex).problems[0]
+    r = check_env(S, env, ex)
+    assert "missing" in r.problems[0] and "APP_PORT" not in r.missing and "APP_NAME" in r.missing
     ex.write_text("stale\n")
     assert any("out of date" in p for p in check_env(S, env, ex).problems)
 

@@ -119,4 +119,4 @@ The annotated `.env.example` is the agent-readable schema. Teams block `.env` fr
 
 ## 7. Future directions (not in v1)
 
-Nested models (`env_nested_delimiter`), multiple Settings classes and other sources, `.env.test` / `.env.prod` variants, machine-readable schema output, agent-config helpers (e.g. ignore rules), a pre-commit package, and further ways to run it from Python (`python -m <name>`, class-method sugar on `EnvManagedSettings`, import-string targets for `sync_env`).
+Nested models (`env_nested_delimiter`), multiple Settings classes and other sources, `.env.test` / `.env.prod` variants, machine-readable schema output, agent-config helpers (e.g. ignore rules), a pre-commit package, and further ways to run it from Python (`python -m <name>`, class-method sugar on `EnvManagedSettings`, import-string targets for `sync_env`), and a stricter agent-facing `check` (required vs optional fields, blank-value detection, `os.environ` as a source, `--json` output).

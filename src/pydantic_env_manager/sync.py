@@ -25,6 +25,7 @@ class SyncResult(NamedTuple):
 class CheckReport(NamedTuple):
     problems: List[str]  # fail the check
     notes: List[str]  # informational only
+    missing: List[str]  # env keys declared in Settings but absent from .env
 
 
 def _paths(
@@ -89,6 +90,7 @@ def check_env(
     env, example = _paths(cls, env_file, example_file)
     problems: List[str] = []
     notes: List[str] = []
+    missing: List[str] = []
     if _read(example) != _example_text(cls, example):
         problems.append(f"{example} is out of date")
     env_text = _read(env)
@@ -102,7 +104,7 @@ def check_env(
             problems.append(f"{env} is missing: {', '.join(missing)}")
         if extra:
             notes.append(f"{env} has keys not in settings: {', '.join(extra)}")
-    return CheckReport(problems, notes)
+    return CheckReport(problems, notes, missing)
 
 
 def _skip_boot_sync() -> bool:

@@ -39,7 +39,7 @@ uv venv .venv && uv pip install --link-mode copy --python .venv/bin/python -e ".
 
 ## Out of scope for v1 (don't build)
 
-Nested models, multiple Settings classes or non-env sources, `.env.test`/`.env.prod`, machine-readable schema output, agent-config snippets, a pre-commit package, `typer`/`click`, `python -m` entry point, `EnvManagedSettings` class-method sugar, import-string targets for `sync_env`. Raise it instead of adding it.
+Nested models, multiple Settings classes or non-env sources, `.env.test`/`.env.prod`, machine-readable schema output, agent-config snippets, a pre-commit package, `typer`/`click`, `python -m` entry point, `EnvManagedSettings` class-method sugar, stricter agent-facing `check` (required/blank/`os.environ`/`--json`), import-string targets for `sync_env`. Raise it instead of adding it.
 
 ## Working conventions
 
