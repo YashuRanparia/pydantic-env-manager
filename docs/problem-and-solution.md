@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | Draft |
-| **Package name** | TBD (candidates: `envsync`, `pydantic-env-sync`) |
+| **Package name** | `pydantic-env-manager` (import `pydantic_env_manager`); decided, `envsync` is taken on PyPI |
 | **Target stack** | Python ≥ 3.9, Pydantic v2, `pydantic-settings` ≥ 2 |
 | **Related** | [Scope: v1](scopes/v1.md) |
 
@@ -119,4 +119,4 @@ The annotated `.env.example` is the agent-readable schema. Teams block `.env` fr
 
 ## 7. Future directions (not in v1)
 
-Nested models (`env_nested_delimiter`), multiple Settings classes and other sources, `.env.test` / `.env.prod` variants, machine-readable schema output, agent-config helpers (e.g. ignore rules), and a pre-commit package.
+Nested models (`env_nested_delimiter`), multiple Settings classes and other sources, `.env.test` / `.env.prod` variants, machine-readable schema output, agent-config helpers (e.g. ignore rules), a pre-commit package, and further ways to run it from Python (`python -m <name>`, class-method sugar on `SyncedSettings`, import-string targets for `sync_env`).

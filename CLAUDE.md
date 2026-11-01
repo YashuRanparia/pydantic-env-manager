@@ -1,8 +1,8 @@
-# EnvSyncPackage
+# pydantic-env-manager
 
-Python library and CLI that keeps `.env.example` and `.env` in sync with a Pydantic v2 `BaseSettings` class (the single source of truth). Package name is TBD (`envsync` / `pydantic-env-sync`).
+Python library and CLI that keeps `.env.example` and `.env` in sync with a Pydantic v2 `BaseSettings` class (the single source of truth). Package name: `pydantic-env-manager` (import `pydantic_env_manager`).
 
-Status: v1 implemented under the placeholder package name `envsync` (rename `src/envsync`, `pyproject.toml`, imports once the real name is chosen). Read these before changing anything:
+Status: v1 implemented. Read these before changing anything:
 - `docs/problem-and-solution.md` for the problem and design
 - `docs/scopes/v1.md` for the agreed v1 scope, requirements, and acceptance checklist
 
@@ -15,8 +15,8 @@ Status: v1 implemented under the placeholder package name `envsync` (rename `src
 ## Layout
 
 ```
-src/envsync/  __init__.py  sync.py  schema.py  envfile.py  render.py  cli.py
-tests/        test_envsync.py
+src/pydantic_env_manager/  __init__.py  sync.py  schema.py  envfile.py  render.py  cli.py
+tests/        test_pydantic_env_manager.py
 docs/         problem-and-solution.md  scopes/v1.md  plans/project-setup.md
 ```
 
@@ -39,7 +39,7 @@ uv venv .venv && uv pip install --link-mode copy --python .venv/bin/python -e ".
 
 ## Out of scope for v1 (don't build)
 
-Nested models, multiple Settings classes or non-env sources, `.env.test`/`.env.prod`, machine-readable schema output, agent-config snippets, a pre-commit package, `typer`/`click`. Raise it instead of adding it.
+Nested models, multiple Settings classes or non-env sources, `.env.test`/`.env.prod`, machine-readable schema output, agent-config snippets, a pre-commit package, `typer`/`click`, `python -m` entry point, `SyncedSettings` class-method sugar, import-string targets for `sync_env`. Raise it instead of adding it.
 
 ## Working conventions
 

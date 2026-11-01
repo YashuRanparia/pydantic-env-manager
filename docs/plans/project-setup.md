@@ -10,7 +10,7 @@
 
 | # | Item | Proposed default |
 |---|---|---|
-| 1 | Package name | Blocks the `src/<name>/` directory and the PyPI name. Check availability on PyPI before choosing. Candidates: `envsync`, `pydantic-env-sync`. Import name should be a valid identifier (e.g. `envsync`). |
+| 1 | Package name | Blocks the `src/<name>/` directory and the PyPI name. Check availability on PyPI before choosing. Decided: `pydantic-env-manager` (free on PyPI), import `pydantic_env_manager`. |
 | 2 | Build backend | `hatchling` (zero config for `src/` layout). `setuptools` is the alternative. |
 | 3 | Lint / format | `ruff` (dev-only). Skip `black`, `flake8`, `isort`, `mypy` for now. |
 | 4 | License | MIT (maximises adoption). Confirm. |

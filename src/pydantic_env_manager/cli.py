@@ -1,4 +1,4 @@
-"""Command line interface: `envsync sync|check module:Class`."""
+"""Command line interface: `pydantic-env-manager sync|check module:Class`."""
 from __future__ import annotations
 
 import argparse
@@ -27,7 +27,7 @@ def _load(target: str) -> type:
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    p = argparse.ArgumentParser(prog="envsync", description=__doc__)
+    p = argparse.ArgumentParser(prog="pydantic-env-manager", description=__doc__)
     sub = p.add_subparsers(dest="command", required=True)
     for name, help_ in (("sync", "write .env.example and merge into .env"), ("check", "exit 1 if files have drifted")):
         s = sub.add_parser(name, help=help_)

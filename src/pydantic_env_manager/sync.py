@@ -123,4 +123,4 @@ class SyncedSettings(BaseSettings):
             try:
                 sync_env(type(self))
             except Exception as exc:  # never break the app over a dev convenience
-                log.warning("envsync: sync failed: %s", exc)
+                log.warning("pydantic-env-manager: sync failed: %s", exc)

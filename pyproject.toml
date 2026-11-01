@@ -3,10 +3,11 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "envsync"  # placeholder, rename when the package name is decided
+name = "pydantic-env-manager"
 version = "0.1.0"
-description = "Keep .env and .env.example in sync with a Pydantic v2 BaseSettings class."
+description = "Manage .env and .env.example for FastAPI/Pydantic apps: declare variables once in your Settings class; files stay complete and agents can check them without reading secrets."
 readme = "README.md"
+keywords = ["pydantic", "pydantic-settings", "fastapi", "dotenv", "env", "settings", "cli"]
 requires-python = ">=3.9"
 license = "MIT"
 dependencies = ["pydantic-settings>=2"]
@@ -15,10 +16,10 @@ dependencies = ["pydantic-settings>=2"]
 dev = ["pytest", "ruff"]
 
 [project.scripts]
-envsync = "envsync.cli:main"
+pydantic-env-manager = "pydantic_env_manager.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/envsync"]
+packages = ["src/pydantic_env_manager"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
