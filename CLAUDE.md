@@ -3,8 +3,8 @@
 Python library and CLI that keeps `.env.example` and `.env` in sync with a Pydantic v2 `BaseSettings` class (the single source of truth). Package name: `pydantic-env-manager` (import `pydantic_env_manager`).
 
 Status: v1 implemented. Read these before changing anything:
-- `docs/problem-and-solution.md` for the problem and design
-- `docs/scopes/v1.md` for the agreed v1 scope, requirements, and acceptance checklist
+- `.local/problem-and-solution.md` for the problem and design
+- `.local/scopes/v1.md` for the agreed v1 scope, requirements, and acceptance checklist
 
 ## Stack
 
@@ -17,7 +17,8 @@ Status: v1 implemented. Read these before changing anything:
 ```
 src/pydantic_env_manager/  __init__.py  sync.py  schema.py  envfile.py  render.py  cli.py
 tests/        test_pydantic_env_manager.py
-docs/         problem-and-solution.md  scopes/v1.md  plans/project-setup.md
+docs/         usage.md
+.local/       (gitignored) problem-and-solution.md  scopes/v1.md  plans/project-setup.md
 ```
 
 ## Commands
@@ -43,6 +44,6 @@ Nested models, multiple Settings classes or non-env sources, `.env.test`/`.env.p
 
 ## Working conventions
 
-- Keep it small: fewest files and the least code that meets `docs/scopes/v1.md`. No speculative abstractions.
-- Any new behaviour needs a pytest case; the acceptance checklist in `docs/scopes/v1.md` is the minimum test list.
-- If a requirement is ambiguous, update the docs (and the open-items table in `docs/scopes/v1.md`) rather than silently deciding in code.
+- Keep it small: fewest files and the least code that meets `.local/scopes/v1.md`. No speculative abstractions.
+- Any new behaviour needs a pytest case; the acceptance checklist in `.local/scopes/v1.md` is the minimum test list.
+- If a requirement is ambiguous, update the docs (and the open-items table in `.local/scopes/v1.md`) rather than silently deciding in code.
